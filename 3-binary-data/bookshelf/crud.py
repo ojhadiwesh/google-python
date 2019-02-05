@@ -59,7 +59,8 @@ def list():
 @crud.route('/<id>')
 def view(id):
     image = get_model().read(id)
-    return render_template("view.html", image=image)
+    text = get_model().scan(id)
+    return render_template("view.html", image=image, texts= text )
 
 
 @crud.route('/add', methods=['GET', 'POST'])

@@ -14,6 +14,7 @@
 
 from flask import current_app
 from google.cloud import datastore
+from google.cloud import vision
 
 
 builtin_list = list
@@ -22,6 +23,8 @@ builtin_list = list
 def init_app(app):
     pass
 
+def get_vision_client():
+    return vision.ImageAnnotatorClient()
 
 def get_client():
     return datastore.Client(current_app.config['PROJECT_ID'])
@@ -66,6 +69,17 @@ def read(id):
     key = ds.key('image', int(id))
     results = ds.get(key)
     return from_datastore(results)
+def scan(id):
+    vision = get_vision_client()
+    datastore_image= read(id)
+    with io.open(datastore_image, 'rb') as image_file:
+        content = image_file.read()
+
+    image = types.Image(content=content)
+    response = vision.text_detection(image= image)
+    texts  = response.text_annotations
+    for text in texts:
+         return ('\n"{}"'.format(text.description))
 
 
 def update(data, id=None):

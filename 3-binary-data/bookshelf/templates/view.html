@@ -19,7 +19,7 @@
 {% block content %}
 
 <h3>Image</h3>
-
+<h3>Text: </h3>
 <div class="btn-group">
   <a href="/images/{{image.id}}/edit" class="btn btn-primary btn-sm">
     <i class="glyphicon glyphicon-edit"></i>
@@ -36,6 +36,7 @@
   <div class="media-left">
     {% if image.imageUrl %}
       <img class="label-image" src="{{image.imageUrl}}">
+      <p>{{texts}}</p>
     {% else %}
       <p>Now working</p>
     {% endif %}
