@@ -27,27 +27,21 @@
   </a>
   <a href="/images/{{image.id}}/delete" class="btn btn-danger btn-sm">
     <i class="glyphicon glyphicon-trash"></i>
-    Delete image
+    Delete Image
   </a>
 </div>
 
 <div class="media">
   {# [START label_image] #}
   <div class="media-left">
-    {% if image.image %}
+    {% if image.imageUrl %}
       <img class="label-image" src="{{image.imageUrl}}">
     {% else %}
-      <img class="label-image" src="http://placekitten.com/g/128/192">
+      <p>Now working</p>
     {% endif %}
   </div>
   {# [END label_image] #}
-  <div class="media-body">
-    <h4 class="book-title">
-      {{image.title}}
-      <small>{{image.image}}</small>
-    </h4>
 
-  </div>
 </div>
 
 {% endblock %}
