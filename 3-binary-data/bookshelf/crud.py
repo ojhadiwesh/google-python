@@ -48,7 +48,7 @@ def list():
     if token:
         token = token.encode('utf-8')
 
-    books, next_page_token = get_model().list(cursor=token)
+    images, next_page_token = get_model().list(cursor=token)
 
     return render_template(
         "list.html",
@@ -58,7 +58,7 @@ def list():
 
 @crud.route('/<id>')
 def view(id):
-    book = get_model().read(id)
+    image = get_model().read(id)
     return render_template("view.html", image=image)
 
 
@@ -77,7 +77,7 @@ def add():
             data['imageUrl'] = image_url
         # [END image_url2]
 
-        book = get_model().create(data)
+        image = get_model().create(data)
 
         return redirect(url_for('.view', id=image['id']))
 
@@ -86,7 +86,7 @@ def add():
 
 @crud.route('/<id>/edit', methods=['GET', 'POST'])
 def edit(id):
-    book = get_model().read(id)
+    image = get_model().read(id)
 
     if request.method == 'POST':
         data = request.form.to_dict(flat=True)
@@ -96,7 +96,7 @@ def edit(id):
         if image_url:
             data['imageUrl'] = image_url
 
-        book = get_model().update(data, id)
+        image = get_model().update(data, id)
 
         return redirect(url_for('.view', id=image['id']))
 
