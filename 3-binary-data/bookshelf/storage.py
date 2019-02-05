@@ -25,7 +25,7 @@ from werkzeug.exceptions import BadRequest
 
 def _get_storage_client():
     return storage.Client(
-        project=current_app.config['freight-lynk'])
+        project=current_app.config['PROJECT_ID'])
 
 
 def _check_extension(filename, allowed_extensions):
