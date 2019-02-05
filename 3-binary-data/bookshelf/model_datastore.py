@@ -73,7 +73,8 @@ def read(id):
 def scan(id):
     vision = get_vision_client()
     datastore_image= read(id)
-    image = types.Image(content=datastore_image)
+    content = io.read(datastore_image)
+    image = types.Image(content=content)
     response = vision.text_detection(image= image)
     texts  = response.text_annotations
     for text in texts:
