@@ -52,14 +52,14 @@ def list():
 
     return render_template(
         "list.html",
-        books=books,
+        images=images,
         next_page_token=next_page_token)
 
 
 @crud.route('/<id>')
 def view(id):
     book = get_model().read(id)
-    return render_template("view.html", book=book)
+    return render_template("view.html", image=image)
 
 
 @crud.route('/add', methods=['GET', 'POST'])
@@ -79,9 +79,9 @@ def add():
 
         book = get_model().create(data)
 
-        return redirect(url_for('.view', id=book['id']))
+        return redirect(url_for('.view', id=image['id']))
 
-    return render_template("form.html", action="Add", book={})
+    return render_template("form.html", action="Add", image={})
 
 
 @crud.route('/<id>/edit', methods=['GET', 'POST'])
@@ -98,9 +98,9 @@ def edit(id):
 
         book = get_model().update(data, id)
 
-        return redirect(url_for('.view', id=book['id']))
+        return redirect(url_for('.view', id=image['id']))
 
-    return render_template("form.html", action="Edit", book=book)
+    return render_template("form.html", action="Edit", image=image)
 
 
 @crud.route('/<id>/delete')
