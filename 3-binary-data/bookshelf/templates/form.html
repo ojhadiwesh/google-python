@@ -22,23 +22,18 @@
 
 <form method="POST" enctype="multipart/form-data">
 
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" name="title" id="title" value="{{image.title}}" class="form-control"/>
-  </div>
-
 
   <div class="form-group">
-    <label for="image">Cover Image</label>
-    <input type="file" name="image" id="image" value= "{{image.image}}" class="form-control" accept="image/*" capture>
+    <label for="image">Label Image</label>
+    <input type="file" name="image" id="image" class="form-control" accept="image/*" capture>
   </div>
 
   <div class="form-group hidden">
-    <label for="imageUrl">Cover Image URL</label>
+    <label for="imageUrl">Label Image URL</label>
     <input type="text" name="imageUrl" id="imageUrl" value="{{image.imageUrl}}" class="form-control"/>
   </div>
 
-  <button type="submit" class="btn btn-success">Save</button>
+  <button type="submit" class="btn btn-success">Scan</button>
 </form>
 
 {% endblock %}
