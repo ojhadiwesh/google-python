@@ -18,30 +18,30 @@
 
 {% block content %}
 
-<h3>Books</h3>
-<a href="/books/add" class="btn btn-success btn-sm">
+<h3>Image</h3>
+<a href="/images/add" class="btn btn-success btn-sm">
   <i class="glyphicon glyphicon-plus"></i>
-  Add book
+  Scan Image
 </a>
 
-{% for book in books %}
+{% for image in images %}
 <div class="media">
-  <a href="/books/{{book.id}}">
+  <a href="/images/{{image.id}}">
     <div class="media-left">
-      {% if book.imageUrl %}
-        <img src="{{book.imageUrl}}">
+      {% if image.imageUrl %}
+        <img src="{{image.imageUrl}}">
       {% else %}
         <img src="http://placekitten.com/g/128/192">
       {% endif %}
     </div>
     <div class="media-body">
-      <h4>{{book.title}}</h4>
-      <p>{{book.author}}</p>
+      <h4>{{image.title}}</h4>
+      <p>{{image.image}}</p>
     </div>
   </a>
 </div>
 {% else %}
-<p>No books found</p>
+<p>No image found</p>
 {% endfor %}
 
 {% if next_page_token %}
