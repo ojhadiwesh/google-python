@@ -15,6 +15,7 @@
 from flask import current_app
 from google.cloud import datastore
 from google.cloud import vision
+from google.cloud.vision import types
 import io
 
 builtin_list = list
